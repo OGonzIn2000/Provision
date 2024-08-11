@@ -1,0 +1,1072 @@
+/* Importando la fuente Playfair Display desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Open Sans', sans-serif;
+    /* Aplicar la fuente globalmente */
+    background-color: #f4f4f4;
+    color: #333;
+    padding-top: 80px;
+    /* Espacio suficiente para el header fijo */
+    padding-bottom: 60px;
+    /* Espacio suficiente para el footer fijo */
+}
+
+/* Estilos del header y navegación */
+header {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    background-color: #343a40;
+    /* Color oscuro del header */
+    color: white;
+    padding: 1rem 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra para el header */
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem;
+    /* Añade espacio a los lados del contenido del header */
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo {
+    flex: 1;
+}
+
+.logo img {
+    height: 60px;
+    /* Aumenta el tamaño del logo según sea necesario */
+    filter: brightness(1.2);
+    /* Aumenta la claridad del logo */
+}
+
+.menu-toggle {
+    display: none;
+    cursor: pointer;
+    position: relative;
+    z-index: 1001;
+}
+
+.menu-toggle .bar {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.open .bar1 {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.menu-toggle.open .bar2 {
+    opacity: 0;
+}
+
+.menu-toggle.open .bar3 {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    margin-left: auto;
+    padding: 0;
+}
+
+.nav-links li {
+    margin: 0 15px;
+    display: flex;
+    align-items: center;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s, color 0.3s;
+    padding: 10px;
+}
+
+.nav-links a i {
+    margin-right: 8px;
+    /* Espacio entre el ícono y el texto */
+}
+
+.nav-links a:hover {
+    background-color: #495057;
+    /* Color de fondo del enlace al pasar el ratón */
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+/* Estilos del footer */
+footer {
+    background-color: #343a40;
+    /* Color oscuro del footer */
+    color: white;
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+    /* Sombra para el footer */
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+    /* Espacio a los lados del contenido del footer */
+}
+
+.footer-left {
+    padding-left: 1rem;
+}
+
+.footer-right {
+    display: flex;
+    align-items: center;
+}
+
+.footer-right .social-icon {
+    color: white;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
+}
+
+.footer-right .social-icon:hover {
+    color: #ddd;
+}
+
+/* Estilos para el menú hamburguesa */
+.menu-toggle .bar {
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        background-color: #343a40;
+        position: fixed;
+        top: 60px;
+        left: 0;
+        z-index: 1000;
+        transform: translateX(-100%);
+        opacity: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        padding: 0;
+    }
+
+    .nav-links.active {
+        transform: translateX(0);
+        opacity: 1;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+}
+
+/* Ocultar íconos en el menú de escritorio */
+@media (min-width: 769px) {
+    .nav-links a i {
+        display: none;
+    }
+}
+
+/* Espacio para el contenido principal */
+main {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    /* Color de fondo clarito para el contenido principal */
+}
+
+/* Sección de bienvenida */
+.welcome-section {
+    text-align: center;
+    padding: 2rem;
+    background-color: #e2e2e2;
+    /* Color de fondo para la sección de bienvenida */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+    /* Agregar margen inferior para separar del carrusel */
+}
+
+.welcome-section h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.welcome-section p {
+    font-size: 1.2rem;
+    line-height: 1.5;
+}
+
+
+/* Sección de carrusel de imágenes */
+.icon-cards {
+    position: relative;
+    width: 60vw;
+    /* Ajusta el ancho del carrusel según sea necesario */
+    height: 35vw;
+    /* Ajusta la altura del carrusel según sea necesario */
+    max-width: 500px;
+    /* Tamaño máximo del carrusel */
+    max-height: 300px;
+    /* Tamaño máximo del carrusel */
+    margin: 0 auto;
+    color: white;
+    perspective: 1000px;
+    transform-origin: center;
+}
+
+.icon-cards__content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-origin: center;
+    transform-style: preserve-3d;
+    transform: translateZ(-35vw) rotateY(0);
+    animation: carousel 15s infinite cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+.icon-cards__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 60vw;
+    /* Ajusta el ancho de cada ítem según sea necesario */
+    height: 35vw;
+    /* Ajusta la altura de cada ítem según sea necesario */
+    max-width: 500px;
+    /* Tamaño máximo de cada ítem */
+    max-height: 300px;
+    /* Tamaño máximo de cada ítem */
+    box-shadow: 0 5px 20px rgba(0, 0, 0, .1);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.icon-cards__item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Asegura que las imágenes cubran el área del contenedor */
+}
+
+
+.icon-cards__item:nth-child(1) {
+    background: #FDD94F;
+    transform: rotateY(0) translateZ(35vw);
+}
+
+.icon-cards__item:nth-child(2) {
+    background: #F87949;
+    transform: rotateY(120deg) translateZ(35vw);
+}
+
+.icon-cards__item:nth-child(3) {
+    background: #FBAB48;
+    transform: rotateY(240deg) translateZ(35vw);
+}
+
+@keyframes carousel {
+
+    0%,
+    17.5% {
+        transform: translateZ(-35vw) rotateY(0);
+    }
+
+    27.5%,
+    45% {
+        transform: translateZ(-35vw) rotateY(-120deg);
+    }
+
+    55%,
+    72.5% {
+        transform: translateZ(-35vw) rotateY(-240deg);
+    }
+
+    82.5%,
+    100% {
+        transform: translateZ(-35vw) rotateY(-360deg);
+    }
+}
+
+/* Estilos para el checkbox de animación */
+.checkbox {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.checkbox__checkbox {
+    position: relative;
+    width: 1.0625rem;
+    height: 1.0625rem;
+    background: white;
+    border: 1px solid #F47956;
+    border-radius: 4px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: background 0.1s ease;
+}
+
+.checkbox__checkbox::after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 5px;
+    width: 5px;
+    height: 11px;
+    opacity: 0;
+    transform: rotate(45deg) scale(0);
+    border-right: 2px solid #F47956;
+    border-bottom: 2px solid #F47956;
+    transition: all 0.3s ease;
+    transition-delay: 0.15s;
+}
+
+.checkbox__label {
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+input:checked~.checkbox__checkbox {
+    background: #F47956;
+    border-color: transparent;
+}
+
+input:checked~.checkbox__checkbox::after {
+    opacity: 1;
+    transform: rotate(45deg) scale(1);
+}
+
+@keyframes jelly {
+    from {
+        transform: scale(1, 1);
+    }
+
+    30% {
+        transform: scale(1.25, 0.75);
+    }
+
+    40% {
+        transform: scale(0.75, 1.25);
+    }
+
+    50% {
+        transform: scale(1.15, 0.85);
+    }
+
+    65% {
+        transform: scale(0.95, 1.05);
+    }
+
+    75% {
+        transform: scale(1.05, 0.95);
+    }
+
+    to {
+        transform: scale(1, 1);
+    }
+}
+
+
+/* Estilos para la sección de historia */
+.history-section {
+    margin: 2rem auto;
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+.history-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.history-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #f39c12;
+    margin: 0.5rem auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.history-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.history-image,
+.history-text {
+    flex: 1;
+    min-width: 300px;
+    position: relative;
+}
+
+.history-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.history-image img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.history-text {
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: justify;
+}
+
+.history-text p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.history-image img,
+.history-text {
+    animation: fadeIn 1s ease-out;
+}
+
+
+/* Estilos para la sección de misión y visión */
+.mission-vision-section {
+    margin: 2rem auto 3rem;
+    max-width: 1200px;
+    padding: 1rem;
+    background-color: #f9f9f9;
+    /* Color de fondo para la sección */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mission-vision-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.mission-vision-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: #f39c12;
+    margin: 0.5rem auto;
+    border-radius: 2px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.mission-vision-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.mission,
+.vision {
+    flex: 1;
+    min-width: 300px;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: justify;
+    position: relative;
+}
+
+.mission h3,
+.vision h3 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.mission p,
+.vision p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.mission::before,
+.vision::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(45deg, #f39c12, #e74c3c);
+    transform: translateX(-50%);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    z-index: 0;
+    transition: all 0.5s ease;
+}
+
+.mission:hover::before,
+.vision:hover::before {
+    background: linear-gradient(45deg, #e74c3c, #f39c12);
+    transform: translateX(-50%) scale(1.1);
+}
+
+.mission-content,
+.vision-content {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* Estilos generales para la sección de Misión y Visión */
+.mission-vision-section {
+    width: 100%;
+    /* Ocupa el ancho completo del elemento contenedor */
+    max-width: 1200px;
+    /* Establece el ancho máximo del contenedor */
+    margin: 0 auto;
+    /* Centra el contenedor horizontalmente */
+    padding: 1rem;
+}
+
+.mission-vision-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #333;
+}
+
+.mission-vision-content {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 1rem;
+}
+
+/* Ajuste de las columnas */
+.mission,
+.vision {
+    width: 45%;
+    background: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Efecto de apertura como libro (opcional) */
+.mission-section .section-content__text {
+    transform: perspective(1000px) rotateY(-10deg);
+}
+
+.vision-section .section-content__text {
+    transform: perspective(1000px) rotateY(10deg);
+}
+
+.mission-vision-section.opened .mission,
+.mission-vision-section.opened .vision {
+    transform: perspective(1000px) rotateY(0deg);
+}
+
+
+/* Estilos para las imágenes debajo del texto */
+.mission img,
+.vision img {
+    display: block;
+    margin-top: 1rem;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+/* RESEÑA */
+/* Estilos para la sección de reseña */
+.review-section {
+    padding: 2rem;
+    background-color: #ffffff;
+    margin: 2rem auto;
+    /* Añade márgenes superior e inferior */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    /* Limita el ancho máximo para una mejor lectura */
+    text-align: center;
+    /* Centra el texto dentro de la sección de reseña */
+}
+
+.review-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent);
+    z-index: 1;
+}
+
+.review-section h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+}
+
+.review-section p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: #666;
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 600px;
+    /* Limita el ancho máximo del texto */
+}
+
+/* Ajustes responsive */
+@media (max-width: 768px) {
+    .review-section {
+        padding: 20px;
+        max-width: 100%;
+    }
+}
+
+
+/* Sección de productos destacados */
+.products-section {
+    padding: 4rem;
+    background-color: #ffffff;
+    /* Fondo blanco para la sección de productos */
+    margin-top: 3rem;
+    /* Añadir margen superior para espacio */
+    text-align: center;
+    /* Centra el texto dentro de la sección */
+}
+
+.products-section h2 {
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
+    /* Tamaño de fuente ajustado para una mejor visibilidad */
+    font-family: 'Poppins', sans-serif;
+    /* Fuente moderna */
+    color: #333;
+    /* Color del texto */
+}
+
+/* Contenedor de productos */
+.products-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    /* 2 filas */
+    gap: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    /* Centra el contenedor dentro del contenedor padre */
+    justify-content: center;
+    /* Centra el contenido en el eje horizontal */
+    align-content: center;
+    /* Centra el contenido en el eje vertical */
+}
+
+/* Tarjeta de producto */
+.product-card {
+    background-color: #f4f4f4;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 1rem;
+    overflow: hidden;
+    /* Asegura que el contenido no se desborde */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 280px;
+    /* Ancho mínimo para las tarjetas */
+    max-width: 100%;
+    /* Ajusta la tarjeta al ancho máximo disponible */
+}
+
+/* Imagen del producto */
+.product-image {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    height: 200px;
+    /* Ajusta la altura según el diseño deseado */
+    background-color: #ddd;
+    /* Color de fondo mientras carga la imagen */
+    margin-bottom: 1rem;
+    /* Espacio entre la imagen y el contenido de la tarjeta */
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Mantiene la proporción y cubre el contenedor */
+    display: block;
+}
+
+/* Estilos para pantallas medianas */
+@media (max-width: 1024px) {
+    .products-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-card {
+        padding: 1rem;
+        min-width: 250px;
+        /* Ancho mínimo ajustado para pantallas medianas */
+    }
+
+    .product-image {
+        height: 220px;
+        /* Ajusta la altura para pantallas medianas */
+    }
+}
+
+/* Estilos para pantallas pequeñas */
+@media (max-width: 768px) {
+    .products-container {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+        /* Añade padding horizontal para espacio */
+    }
+
+    .product-card {
+        padding: 1rem;
+        min-width: 300px;
+        /* Ancho mínimo ajustado para pantallas pequeñas */
+    }
+
+    .product-image {
+        height: 250px;
+        /* Ajusta la altura para pantallas pequeñas */
+    }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .product-card {
+        padding: 0.5rem;
+        /* Reduce el padding en pantallas muy pequeñas */
+        min-width: 260px;
+        /* Ancho mínimo ajustado para pantallas más pequeñas */
+    }
+
+    .product-image {
+        height: 200px;
+        /* Ajusta la altura para pantallas más pequeñas */
+    }
+}
+
+
+/* Sección de Proyección Social */
+.social-section {
+    padding: 2rem;
+    background-color: #e2e2e2;
+    /* Fondo gris claro */
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    /* Centra el texto de la descripción */
+}
+
+.social-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    /* Espacio entre la descripción y el carrusel */
+}
+
+.description {
+    max-width: 100%;
+    /* Se ajusta al ancho del contenedor */
+    padding: 2px;
+}
+
+.description h2 {
+    margin-bottom: 1rem;
+}
+
+/* Carrusel de Imágenes */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    /* Tamaño ajustado del recuadro */
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    /* Alinea el texto al centro */
+}
+
+.carousel-slide img {
+    width: 80%;
+    /* Ajusta el tamaño de la imagen */
+    height: auto;
+    max-width: 400px;
+    /* Tamaño máximo de la imagen */
+    margin: 0 auto;
+    /* Centra la imagen */
+}
+
+.carousel-slide p {
+    font-size: 1rem;
+    /* Tamaño de fuente para la descripción */
+    padding: 10px;
+    color: #333;
+    /* Color de texto */
+    text-align: center;
+    /* Alinea el texto al centro */
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 12px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+
+/* Sección de contacto */
+.contact-section {
+    padding: 2rem;
+    background-color: #f9f9f9;
+    /* Fondo gris claro para un contraste más suave */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+    margin: 2rem auto;
+    /* Margen para centrar la sección */
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    /* Fondo blanco para el formulario */
+    padding: 2rem;
+    /* Espaciado interno */
+    border-radius: 8px;
+    /* Bordes redondeados */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil */
+}
+
+.contact-form label {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 1rem;
+    color: #333;
+    /* Color de texto más oscuro para mejor legibilidad */
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    /* Borde más suave */
+    border-radius: 5px;
+    font-size: 1rem;
+    box-sizing: border-box;
+    /* Asegura que el padding se incluya en el ancho total */
+}
+
+.contact-form textarea {
+    resize: vertical;
+    /* Permite redimensionar verticalmente */
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 0.75rem;
+    background-color: #007bff;
+    /* Color azul para el botón */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Añade una transición para el hover */
+}
+
+.contact-form button:hover {
+    background-color: #0056b3;
+    /* Color azul más oscuro al pasar el ratón */
+    transform: scale(1.05);
+    /* Agranda ligeramente el botón al pasar el ratón */
+}
+
+
+
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    margin: auto;
+    overflow: hidden;
+}
+
+.carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    min-width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+    /* Centrar el texto */
+    position: relative;
+    /* Necesario para posicionar la descripción */
+}
+
+.carousel-slide img {
+    width: 80%;
+    /* Reducir el tamaño de la imagen */
+    height: auto;
+    margin: 0 auto;
+    /* Centrar la imagen */
+    display: block;
+}
+
+.carousel-description {
+    display: none;
+    /* Ocultamos la descripción en el carrusel, solo se mostrará cuando sea necesario */
+}
+
+.prev,
+.next {
+    position: absolute;
+    top: 50%;
+    width: auto;
+    padding: 16px;
+    margin-top: -22px;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    border-radius: 0 3px 3px 0;
+}
+
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.prev:hover,
+.next:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+
+#social-description {
+    font-size: 16px;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.6;
+}
